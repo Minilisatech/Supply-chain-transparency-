@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pharmacy Supply Chain - Blockchain Transparency</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 20px;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    h1 {
+      color: white;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card h2 {
+      color: #2c3e50;
+      margin-top: 0;
+    }
+    .track-section {
+      background: #ecf0f1;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+    input, button {
+      padding: 12px;
+      margin: 5px 0;
+      border-radius: 6px;
+      border: 1px solid #ddd;
+      width: 100%;
+      box-sizing: border-box;
+    }
+    button {
+      background: #667eea;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background: #5568d3;
+    }
+    .timeline {
+      border-left: 3px solid #667eea;
+      padding-left: 20px;
+      margin-left: 10px;
+    }
+    .timeline-item {
+      margin: 20px 0;
+      padding: 10px;
+      background: #f8f9fa;
+      border-radius: 6px;
+    }
+    .status {
+      display: inline-block;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+    .verified {
+      background: #2ecc71;
+      color: white;
+    }
+    .pending {
+      background: #f39c12;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🏥 Pharmacy Supply Chain Transparency</h1>
+
+    <div class="card">
+      <h2>Track Your Medication</h2>
+      <p>Enter the batch number or QR code to verify the authenticity and journey of your medication.</p>
+      <div class="track-section">
+        <input type="text" id="batchNumber" placeholder="Enter Batch Number (e.g., MED-2024-001)">
+        <button onclick="trackMedication()">Track Medication</button>
+      </div>
+      <div id="trackingResult"></div>
+    </div>
+
+    <div class="card">
+      <h2>Why Blockchain for Pharmacy?</h2>
+      <ul>
+        <li><strong>Counterfeit Prevention:</strong> Verify medication authenticity instantly</li>
+        <li><strong>Temperature Monitoring:</strong> Track storage conditions throughout transit</li>
+        <li><strong>Recall Management:</strong> Quickly identify and remove affected batches</li>
+        <li><strong>Regulatory Compliance:</strong> Immutable audit trail for inspections</li>
+        <li><strong>Expiry Tracking:</strong> Real-time monitoring of expiration dates</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Supply Chain Stages</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <strong>🏭 Manufacturer</strong> - Drug production and quality control
+        </div>
+        <div class="timeline-item">
+          <strong>📦 Distributor</strong> - Wholesale storage and logistics
+        </div>
+        <div class="timeline-item">
+          <strong>🚚 Transport</strong> - Temperature-controlled delivery
+        </div>
+        <div class="timeline-item">
+          <strong>🏥 Pharmacy</strong> - Final verification and dispensing
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function trackMedication() {
+      const batchNumber = document.getElementById('batchNumber').value;
+      const resultDiv = document.getElementById('trackingResult');
+
+      if (!batchNumber) {
+        resultDiv.innerHTML = '<p style="color: red;">Please enter a batch number.</p>';
+        return;
+      }
+
+      // Simulated tracking data
+      resultDiv.innerHTML = `
+        <div style="margin-top: 20px;">
+          <h3>Tracking Results for: ${batchNumber}</h3>
+          <p><span class="status verified">✓ VERIFIED</span></p>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <strong>Manufacturing</strong><br>
+              Date: Jan 15, 2024<br>
+              Location: PharmaCorp, New Jersey<br>
+              Hash: 0x7f9fade1c0d57a7af66ab4ead79fade1c0d57a7
+            </div>
+            <div class="timeline-item">
+              <strong>Quality Control</strong><br>
+              Date: Jan 16, 2024<br>
+              Status: Passed all tests<br>
+              Hash: 0x8a1bcde2d1e68b8bg77bc5fbe8afade2d1e68b8
+            </div>
+            <div class="timeline-item">
+              <strong>Distribution Center</strong><br>
+              Date: Jan 18, 2024<br>
+              Location: MedDist Warehouse, Pennsylvania<br>
+              Temp: 2-8°C maintained<br>
+              Hash: 0x9b2cdef3e2f79c9ch88cd6gfc9bgbde3e2f79c9
+            </div>
+            <div class="timeline-item">
+              <strong>Pharmacy Receipt</strong><br>
+              Date: Jan 20, 2024<br>
+              Location: HealthPlus Pharmacy<br>
+              <span class="status verified">Ready for Dispensing</span><br>
+              Hash: 0xac3deff4f3g8ad0di99de7hgd0chcef4f3g8ad0
+            </div>
+          </div>
+
+          <p style="margin-top: 20px;"><strong>Expiry Date:</strong> Jan 15, 2026</p>
+          <p><strong>Storage Conditions:</strong> All temperature requirements met ✓</p>
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
